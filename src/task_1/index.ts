@@ -8,9 +8,33 @@
  */
 
 export class Currency{
+    public name: string;
+    public value: number;
+    public unit: string;
+    public CurrencyType: CurrencyType;
 
+    constructor(name: string, value: number, unit: string){
+        if(name.length === 0){
+            throw Error("Не указано имя валюты");
+        }
+        
+        if(value < 0){
+            throw Error("Количество валюты не может быть меньше 0");
+        }
+
+        if(unit.length === 0){
+            throw Error("Не указан количественный тип валюты");
+        }
+
+        this.name = name;
+        this.value = value;
+        this.unit = unit;
+    }
 }
 
 export enum CurrencyType {
-
+   'material',
+   "cryptocurrency",
+   "metalDeposit",
 }
+
